@@ -1,0 +1,45 @@
+import os
+
+import telebot
+
+TOKEN = os.environ["BOT_TOKEN"]
+
+bot = telebot.TeleBot(TOKEN)
+
+@bot.message_handler(commands=["start"])
+
+def start(message):
+
+    bot.reply_to(message, "💎 Chào mừng đến LikeVip76!\nGõ /help để xem lệnh.")
+
+@bot.message_handler(commands=["help"])
+
+def help_command(message):
+
+    bot.reply_to(message, "/likes - Dịch vụ\n/price - Bảng giá\n/contact - Hỗ trợ\n/5 - Tạo team 5")
+
+@bot.message_handler(commands=["likes"])
+
+def likes(message):
+
+    bot.reply_to(message, "💎 Dịch vụ LikeVip76\nLiên hệ hỗ trợ để biết chi tiết.")
+
+@bot.message_handler(commands=["price"])
+
+def price(message):
+
+    bot.reply_to(message, "💰 Bảng giá: Gõ /contact để được tư vấn.")
+
+@bot.message_handler(commands=["contact"])
+
+def contact(message):
+
+    bot.reply_to(message, "📩 Liên hệ quản trị viên để được hỗ trợ.")
+
+@bot.message_handler(commands=["5"])
+
+def team5(message):
+
+    bot.reply_to(message, "🎮 Chức năng tạo team 5 đang được chuẩn bị.")
+
+bot.infinity_polling()
